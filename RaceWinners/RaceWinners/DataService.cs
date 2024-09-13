@@ -23,7 +23,7 @@ public class DataService
         groups.Add(new Group
         {
             Name = "Class B",
-            Ranks = new List<int> {6, 7, 10, 13, 16, 22, 24, 27, 34, 39, 40, 42, 48, 52, 53, 62, 66, 67},
+            Ranks = new List<int> {6, 7, 10, 13, 16, 22, 24, 27, 34, 39, 40, 42, 48, 52, 53, 62, 66, 72},
         });
 
         groups.Add(new Group
@@ -34,14 +34,9 @@ public class DataService
 
         groups.Add(new Group
         {
-            Name = "Class = D",
+            Name = "Class D",
             Ranks = new List<int>{2, 5, 8, 15, 17, 31, 33, 36, 37, 38, 46, 51, 55, 57, 58, 59, 67}
         });
-
-
-
-
-
         return groups;
     }
 }

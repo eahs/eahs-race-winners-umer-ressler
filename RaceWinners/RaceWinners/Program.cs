@@ -15,30 +15,45 @@ public class Program
         var data = await ds.GetGroupRanksAsync();
 
         //list of class scores
-        List<int> classes = new List<int>(){0, 0, 0, 0};
-
+        List<int> classes = new List<int>();
+        List<double> avgScores = new List<double>();
 
         for (int i = 0; i < data.Count; i++)
         {
             // Combine the ranks to print as a list
             var ranks = String.Join(", ", data[i].Ranks);
+
+            int sum = 0;
+
             //goes through each element in class
             for (int j = 0; j < data[i].Ranks.Count; j++)
             {
+               
                 //adds element to list from class list
-                classes[i] += data[i].Ranks[j];
+                sum += data[i].Ranks[j];
+                
             }
+            classes.Add(sum);
+            //whitespace for better looks
+            Console.WriteLine();
 
+            Console.WriteLine($"{data[i].Name} - [{ranks}]");
 
-            Console.WriteLine($"{data[i].Name} - [{ranks}]");\
-                //displays amount of people in class
-            Console.WriteLine(data[i].Ranks.Count);
+            Console.WriteLine();
+            //Displays average score of class and adds it to avg scores list
+            Console.WriteLine(data[i].Name + " had a score of " +(double)classes[i] / data[i].Ranks.Count);
+
+            avgScores.Add((double)classes[i] / data[i].Ranks.Count);
+            
         }
-        //Displays the results for each team using the average of each class's placements
-        Console.WriteLine((double)classes[0] / data[0].Ranks.Count);
-        Console.WriteLine((double)classes[1] / data[1].Ranks.Count);
-        Console.WriteLine((double)classes[2] / data[2].Ranks.Count);
-        Console.WriteLine((double)classes[3] / data[3].Ranks.Count);
+        
+        Console.WriteLine();
+        Console.WriteLine("______________________________________________________________________________________");
+        Console.WriteLine();
+        double winningScore = avgScores.Min();
+
+        //Displays winning class
+        Console.WriteLine("The Winner is " + data[avgScores.IndexOf(winningScore)].Name + " With the Score of " + winningScore + "!!!");
     }
 }
 
