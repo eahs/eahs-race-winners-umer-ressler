@@ -25,15 +25,12 @@ public class Program
 
             int sum = 0;
 
-            //goes through each element in class
-            for (int j = 0; j < data[i].Ranks.Count; j++)
-            {
-               
-                //adds element to list from class list
-                sum += data[i].Ranks[j];
-                
-            }
-            classes.Add(sum);
+
+            //adds sums and averages to corresponding lists
+            classes.Add(data[i].Ranks.Sum());
+            avgScores.Add(data[i].Ranks.Average());
+
+
             //whitespace for better looks
             Console.WriteLine();
 
@@ -44,7 +41,6 @@ public class Program
             Console.WriteLine(data[i].Name + " had a score of " +(double)classes[i] / data[i].Ranks.Count);
 
             avgScores.Add((double)classes[i] / data[i].Ranks.Count);
-            
         }
         
         Console.WriteLine();
